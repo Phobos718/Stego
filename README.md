@@ -1,6 +1,6 @@
 # Stego
 Steganography tool concealing a payload file (txt) into an image (lossless formats). It does this by manipulating the RGB channel vaules to represent binary bits. The original image is used as a key to extract data. 
-Work in progress
+This is a work in progress and more functions are to be added soon (other methods that do not require a key to decrypt, password protection, multiple data channels for enhanced capacity, etc)
 
 Concealment:
 - Converting payload text file into binary (each ascii character is an octet)
