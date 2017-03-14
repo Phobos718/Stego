@@ -98,8 +98,6 @@ def extract(img_orig, img_msg):
     return binary
 
 
-
-print   '\n###########################################\n             Stego\n###########################################\n'
 mode = ''
 while mode != '1' and mode != '2':
     mode = raw_input('Select from following modes:\n[1] Inject file into image\n[2] Extract file from image\n\n')
