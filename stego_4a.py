@@ -1,7 +1,9 @@
 from PIL import Image
 import math
 
-def binarise(filename): #converts payload file to a list of binary bits (string)
+
+def binarise(filename): 
+    #converts payload file to a list of binary bits (string)
     f = open(filename,'r').read()
     b_file=[]
     for char in range(len(f)):
@@ -11,7 +13,8 @@ def binarise(filename): #converts payload file to a list of binary bits (string)
 
 
 
-def decode(b_file): #reverses binarise(), takes list, returns string
+def decode(b_file): 
+    #reverses binarise(), takes list, returns string
     result = []
     for byte in range(0,len(b_file),8):
         result.append(chr(int(''.join(b_file[byte:byte+8]),2)))
@@ -24,7 +27,8 @@ def inject(img_name, binfile, output_filename):
         counter=0
         grid = im.load()
         
-        # prevents counter from crashing if len(binfile) % 3 != 0 (as there are 3 channels data is being saved to)
+        # prevents counter from crashing if len(binfile) % 3 != 0 
+        #(as there are 3 channels data is being saved to)
         if len(binfile) % 3 == 2: 
             binfile.append('3')
         elif len(binfile) % 3 == 1:
@@ -36,7 +40,8 @@ def inject(img_name, binfile, output_filename):
                 pixel = grid[x,y]
                 bitnum = (x + y*im.size[0]) * 3
                 
-                # darkens 255 values a bit (pun intended) to prevent data loss (as 255 can not be incremented further)
+                # darkens 255 values a bit (pun intended) to prevent data loss 
+                #(as 255 can not be incremented further)
                 if pixel[0] == 255: 
                     pixel = (pixel[0]-1,pixel[1],pixel[2])
                 if pixel[1] == 255:
@@ -63,8 +68,8 @@ def inject(img_name, binfile, output_filename):
         im.save(output_filename)
 
 
-# extracts binary data from img_msg using img_orig as a key
 def extract(img_orig, img_msg): 
+    # extracts binary data from img_msg using img_orig as a key
     binary = []
     with Image.open(img_orig) as orig, Image.open(img_msg) as msg:
         grid_orig = orig.load()
