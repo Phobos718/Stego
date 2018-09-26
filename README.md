@@ -1,4 +1,6 @@
 # Stego
+This is my first ever attempt to write my own python code for practice purposes. 
+
 Steganography tool concealing a payload file (txt) into an image (lossless formats). It does this by manipulating the RGB channel vaules to represent binary bits. The original image is used as a key to extract data. 
 This is a work in progress and more functions are to be added soon (other methods that do not require a key to decrypt, password protection, multiple data channels for enhanced capacity, etc)
 
